@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "failuIq+OhIlIjzl8It/mZg6fI59xlIX6sgUXeyaFPMlH77VFbG1kjn7DVa6DYxiYs2ZlckFqtCf39iasOV9OQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Yunus\\Desktop\\postgresql ödev\\postgresql ödev\\postgresql ödev\\postgresql ödev.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Yunus\\.nuget\\packages\\npgsql\\6.0.1\\npgsql.6.0.1.nupkg.sha512",
+    "C:\\Users\\Yunus\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

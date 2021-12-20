@@ -1,0 +1,20 @@
+C:\Users\Yunus\Desktop\postgresql ödev\postgresql ödev\postgresql ödev\bin\Debug\net5.0-windows\postgresql ödev.exe
+C:\Users\Yunus\Desktop\postgresql ödev\postgresql ödev\postgresql ödev\bin\Debug\net5.0-windows\postgresql ödev.deps.json
+C:\Users\Yunus\Desktop\postgresql ödev\postgresql ödev\postgresql ödev\bin\Debug\net5.0-windows\postgresql ödev.runtimeconfig.json
+C:\Users\Yunus\Desktop\postgresql ödev\postgresql ödev\postgresql ödev\bin\Debug\net5.0-windows\postgresql ödev.runtimeconfig.dev.json
+C:\Users\Yunus\Desktop\postgresql ödev\postgresql ödev\postgresql ödev\bin\Debug\net5.0-windows\postgresql ödev.dll
+C:\Users\Yunus\Desktop\postgresql ödev\postgresql ödev\postgresql ödev\bin\Debug\net5.0-windows\ref\postgresql ödev.dll
+C:\Users\Yunus\Desktop\postgresql ödev\postgresql ödev\postgresql ödev\bin\Debug\net5.0-windows\postgresql ödev.pdb
+C:\Users\Yunus\Desktop\postgresql ödev\postgresql ödev\postgresql ödev\bin\Debug\net5.0-windows\Npgsql.dll
+C:\Users\Yunus\Desktop\postgresql ödev\postgresql ödev\postgresql ödev\bin\Debug\net5.0-windows\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Yunus\Desktop\postgresql ödev\postgresql ödev\postgresql ödev\obj\Debug\net5.0-windows\postgresql ödev.csproj.AssemblyReference.cache
+C:\Users\Yunus\Desktop\postgresql ödev\postgresql ödev\postgresql ödev\obj\Debug\net5.0-windows\postgresql_ödev.Form1.resources
+C:\Users\Yunus\Desktop\postgresql ödev\postgresql ödev\postgresql ödev\obj\Debug\net5.0-windows\postgresql ödev.csproj.GenerateResource.cache
+C:\Users\Yunus\Desktop\postgresql ödev\postgresql ödev\postgresql ödev\obj\Debug\net5.0-windows\postgresql ödev.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Yunus\Desktop\postgresql ödev\postgresql ödev\postgresql ödev\obj\Debug\net5.0-windows\postgresql ödev.AssemblyInfoInputs.cache
+C:\Users\Yunus\Desktop\postgresql ödev\postgresql ödev\postgresql ödev\obj\Debug\net5.0-windows\postgresql ödev.AssemblyInfo.cs
+C:\Users\Yunus\Desktop\postgresql ödev\postgresql ödev\postgresql ödev\obj\Debug\net5.0-windows\postgresql ödev.csproj.CoreCompileInputs.cache
+C:\Users\Yunus\Desktop\postgresql ödev\postgresql ödev\postgresql ödev\obj\Debug\net5.0-windows\postgresql ödev.dll
+C:\Users\Yunus\Desktop\postgresql ödev\postgresql ödev\postgresql ödev\obj\Debug\net5.0-windows\ref\postgresql ödev.dll
+C:\Users\Yunus\Desktop\postgresql ödev\postgresql ödev\postgresql ödev\obj\Debug\net5.0-windows\postgresql ödev.pdb
+C:\Users\Yunus\Desktop\postgresql ödev\postgresql ödev\postgresql ödev\obj\Debug\net5.0-windows\postgresql ödev.genruntimeconfig.cache
