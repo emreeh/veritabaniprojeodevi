@@ -1,0 +1,813 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.1
+-- Dumped by pg_dump version 14.1
+
+-- Started on 2021-12-20 21:25:51
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 218 (class 1259 OID 34013)
+-- Name: adres; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.adres (
+    "adresID" integer NOT NULL,
+    "adresulkeIDf" integer NOT NULL
+);
+
+
+ALTER TABLE public.adres OWNER TO postgres;
+
+--
+-- TOC entry 223 (class 1259 OID 34046)
+-- Name: adres detay; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."adres detay" (
+    "adresdetayID" integer NOT NULL,
+    adrestarifi character varying
+);
+
+
+ALTER TABLE public."adres detay" OWNER TO postgres;
+
+--
+-- TOC entry 210 (class 1259 OID 33961)
+-- Name: barista; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.barista (
+    baristaid integer NOT NULL,
+    ad character varying,
+    soyad character varying,
+    adres character varying,
+    "dukkanIDf" integer
+);
+
+
+ALTER TABLE public.barista OWNER TO postgres;
+
+--
+-- TOC entry 211 (class 1259 OID 33968)
+-- Name: dukkan yonetici; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."dukkan yonetici" (
+    "yoneticiID" integer NOT NULL,
+    ad character varying NOT NULL,
+    soyad character varying NOT NULL,
+    adres character varying NOT NULL,
+    "dukkanIDff" integer NOT NULL
+);
+
+
+ALTER TABLE public."dukkan yonetici" OWNER TO postgres;
+
+--
+-- TOC entry 221 (class 1259 OID 34032)
+-- Name: ilce; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.ilce (
+    "adresilceID" integer NOT NULL,
+    "ilçe" character varying NOT NULL,
+    "adressehirIDf" integer NOT NULL
+);
+
+
+ALTER TABLE public.ilce OWNER TO postgres;
+
+--
+-- TOC entry 209 (class 1259 OID 33954)
+-- Name: kahve dukkani; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."kahve dukkani" (
+    "dukkanID" integer NOT NULL,
+    dukkanadi character varying NOT NULL,
+    dukkansahibi character varying NOT NULL,
+    dukkanadres character varying NOT NULL,
+    "yoneticiIDf" integer NOT NULL
+);
+
+
+ALTER TABLE public."kahve dukkani" OWNER TO postgres;
+
+--
+-- TOC entry 215 (class 1259 OID 33994)
+-- Name: kahve satan ulkeler; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."kahve satan ulkeler" (
+    "ulkeID" integer NOT NULL,
+    ulkeadi character varying,
+    kita character varying
+);
+
+
+ALTER TABLE public."kahve satan ulkeler" OWNER TO postgres;
+
+--
+-- TOC entry 212 (class 1259 OID 33975)
+-- Name: kahve tedarik kaydı; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."kahve tedarik kaydı" (
+    "tedarikID" integer NOT NULL,
+    "kahve ismi" character varying NOT NULL,
+    "tedarikciIDf" integer NOT NULL,
+    "dukkanIDfff" integer NOT NULL
+);
+
+
+ALTER TABLE public."kahve tedarik kaydı" OWNER TO postgres;
+
+--
+-- TOC entry 213 (class 1259 OID 33982)
+-- Name: kahve tedarikcisi; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."kahve tedarikcisi" (
+    "tedarikciID" integer NOT NULL,
+    tedarikcifirmaadi character varying NOT NULL,
+    adres character varying NOT NULL
+);
+
+
+ALTER TABLE public."kahve tedarikcisi" OWNER TO postgres;
+
+--
+-- TOC entry 222 (class 1259 OID 34039)
+-- Name: mahalle; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.mahalle (
+    "adresmahalleID" integer NOT NULL,
+    mahalle character varying NOT NULL,
+    "adresdetayIDf" integer NOT NULL
+);
+
+
+ALTER TABLE public.mahalle OWNER TO postgres;
+
+--
+-- TOC entry 217 (class 1259 OID 34006)
+-- Name: musteri; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.musteri (
+    "musteriID" integer NOT NULL,
+    ad character varying NOT NULL,
+    soyad character varying NOT NULL,
+    telefon character varying NOT NULL,
+    "adresIDf" integer NOT NULL
+);
+
+
+ALTER TABLE public.musteri OWNER TO postgres;
+
+--
+-- TOC entry 220 (class 1259 OID 34025)
+-- Name: sehir; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.sehir (
+    "adressehirID" integer NOT NULL,
+    "şehir" character varying NOT NULL,
+    "adresulkeIDff" integer NOT NULL
+);
+
+
+ALTER TABLE public.sehir OWNER TO postgres;
+
+--
+-- TOC entry 216 (class 1259 OID 34001)
+-- Name: siparis; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.siparis (
+    "siparisID" integer NOT NULL,
+    "musteriIDf" integer NOT NULL,
+    "dukkanIDffff" integer NOT NULL
+);
+
+
+ALTER TABLE public.siparis OWNER TO postgres;
+
+--
+-- TOC entry 219 (class 1259 OID 34018)
+-- Name: ulke; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.ulke (
+    "adresulkeID" integer NOT NULL,
+    ulke character varying
+);
+
+
+ALTER TABLE public.ulke OWNER TO postgres;
+
+--
+-- TOC entry 214 (class 1259 OID 33989)
+-- Name: uluslararasi kahve yollari kaydi; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."uluslararasi kahve yollari kaydi" (
+    "internationalcoffeeID" integer NOT NULL,
+    "ulkeIDf" integer NOT NULL,
+    "tedarikciIDff" integer NOT NULL
+);
+
+
+ALTER TABLE public."uluslararasi kahve yollari kaydi" OWNER TO postgres;
+
+--
+-- TOC entry 3425 (class 0 OID 34013)
+-- Dependencies: 218
+-- Data for Name: adres; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.adres ("adresID", "adresulkeIDf") VALUES (1, 1);
+INSERT INTO public.adres ("adresID", "adresulkeIDf") VALUES (2, 2);
+INSERT INTO public.adres ("adresID", "adresulkeIDf") VALUES (3, 3);
+INSERT INTO public.adres ("adresID", "adresulkeIDf") VALUES (4, 1);
+INSERT INTO public.adres ("adresID", "adresulkeIDf") VALUES (5, 2);
+
+
+--
+-- TOC entry 3430 (class 0 OID 34046)
+-- Dependencies: 223
+-- Data for Name: adres detay; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public."adres detay" ("adresdetayID", adrestarifi) VALUES (1, '1arkası');
+INSERT INTO public."adres detay" ("adresdetayID", adrestarifi) VALUES (2, '2arkası');
+INSERT INTO public."adres detay" ("adresdetayID", adrestarifi) VALUES (3, '3arkası');
+INSERT INTO public."adres detay" ("adresdetayID", adrestarifi) VALUES (4, '4arkası');
+INSERT INTO public."adres detay" ("adresdetayID", adrestarifi) VALUES (5, '5arkası');
+
+
+--
+-- TOC entry 3417 (class 0 OID 33961)
+-- Dependencies: 210
+-- Data for Name: barista; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.barista (baristaid, ad, soyad, adres, "dukkanIDf") VALUES (1, 'mehmet', 'ak', '1adres', 1);
+INSERT INTO public.barista (baristaid, ad, soyad, adres, "dukkanIDf") VALUES (2, 'ali', 'kara', '2adres', 2);
+INSERT INTO public.barista (baristaid, ad, soyad, adres, "dukkanIDf") VALUES (3, 'veli', 'taş', '3adres', 3);
+INSERT INTO public.barista (baristaid, ad, soyad, adres, "dukkanIDf") VALUES (4, 'fatih', 'demir', '4adres', 1);
+INSERT INTO public.barista (baristaid, ad, soyad, adres, "dukkanIDf") VALUES (5, 'süleyman', 'toprak', '5adres', 2);
+INSERT INTO public.barista (baristaid, ad, soyad, adres, "dukkanIDf") VALUES (6, 'ahmet', NULL, NULL, NULL);
+
+
+--
+-- TOC entry 3418 (class 0 OID 33968)
+-- Dependencies: 211
+-- Data for Name: dukkan yonetici; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public."dukkan yonetici" ("yoneticiID", ad, soyad, adres, "dukkanIDff") VALUES (1, 'yunus ', 'tek', 'izmir merkez', 1);
+INSERT INTO public."dukkan yonetici" ("yoneticiID", ad, soyad, adres, "dukkanIDff") VALUES (2, 'cemil', 'öz', 'ankara merkez', 2);
+INSERT INTO public."dukkan yonetici" ("yoneticiID", ad, soyad, adres, "dukkanIDff") VALUES (3, 'hakan', 'taşıyan', 'istanbul fatih', 3);
+
+
+--
+-- TOC entry 3428 (class 0 OID 34032)
+-- Dependencies: 221
+-- Data for Name: ilce; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.ilce ("adresilceID", "ilçe", "adressehirIDf") VALUES (1, 'ilçesi', 1);
+INSERT INTO public.ilce ("adresilceID", "ilçe", "adressehirIDf") VALUES (2, '1ilçesi', 2);
+INSERT INTO public.ilce ("adresilceID", "ilçe", "adressehirIDf") VALUES (3, '2ilçesi', 3);
+INSERT INTO public.ilce ("adresilceID", "ilçe", "adressehirIDf") VALUES (4, '3ilçesi', 4);
+INSERT INTO public.ilce ("adresilceID", "ilçe", "adressehirIDf") VALUES (5, '4ilçesi', 5);
+
+
+--
+-- TOC entry 3416 (class 0 OID 33954)
+-- Dependencies: 209
+-- Data for Name: kahve dukkani; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public."kahve dukkani" ("dukkanID", dukkanadi, dukkansahibi, dukkanadres, "yoneticiIDf") VALUES (1, 'sanalbaharat', 'yunus tek', 'izmir merkez', 1);
+INSERT INTO public."kahve dukkani" ("dukkanID", dukkanadi, dukkansahibi, dukkanadres, "yoneticiIDf") VALUES (2, 'coffeetropic', 'cemil öz', 'ankara merkez', 2);
+INSERT INTO public."kahve dukkani" ("dukkanID", dukkanadi, dukkansahibi, dukkanadres, "yoneticiIDf") VALUES (3, 'kahve dünyası', 'hakan taşıyan', 'istanbul fatih', 3);
+
+
+--
+-- TOC entry 3422 (class 0 OID 33994)
+-- Dependencies: 215
+-- Data for Name: kahve satan ulkeler; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public."kahve satan ulkeler" ("ulkeID", ulkeadi, kita) VALUES (1, 'almanya', 'avrupa');
+INSERT INTO public."kahve satan ulkeler" ("ulkeID", ulkeadi, kita) VALUES (2, 'endonezya', 'afrika');
+INSERT INTO public."kahve satan ulkeler" ("ulkeID", ulkeadi, kita) VALUES (3, 'kolombiya', 'afrika');
+INSERT INTO public."kahve satan ulkeler" ("ulkeID", ulkeadi, kita) VALUES (4, 'costa rica', 'afrika');
+INSERT INTO public."kahve satan ulkeler" ("ulkeID", ulkeadi, kita) VALUES (5, 'arabistan', 'afrika');
+
+
+--
+-- TOC entry 3419 (class 0 OID 33975)
+-- Dependencies: 212
+-- Data for Name: kahve tedarik kaydı; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public."kahve tedarik kaydı" ("tedarikID", "kahve ismi", "tedarikciIDf", "dukkanIDfff") VALUES (1, 'sumatra', 1, 1);
+INSERT INTO public."kahve tedarik kaydı" ("tedarikID", "kahve ismi", "tedarikciIDf", "dukkanIDfff") VALUES (2, 'endonezya', 2, 2);
+INSERT INTO public."kahve tedarik kaydı" ("tedarikID", "kahve ismi", "tedarikciIDf", "dukkanIDfff") VALUES (3, 'costa rica', 3, 2);
+INSERT INTO public."kahve tedarik kaydı" ("tedarikID", "kahve ismi", "tedarikciIDf", "dukkanIDfff") VALUES (4, 'tararruzu', 1, 3);
+INSERT INTO public."kahve tedarik kaydı" ("tedarikID", "kahve ismi", "tedarikciIDf", "dukkanIDfff") VALUES (5, 'kolombiya', 2, 1);
+INSERT INTO public."kahve tedarik kaydı" ("tedarikID", "kahve ismi", "tedarikciIDf", "dukkanIDfff") VALUES (6, 'arabistano', 3, 1);
+
+
+--
+-- TOC entry 3420 (class 0 OID 33982)
+-- Dependencies: 213
+-- Data for Name: kahve tedarikcisi; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public."kahve tedarikcisi" ("tedarikciID", tedarikcifirmaadi, adres) VALUES (1, 'international', 'africa');
+INSERT INTO public."kahve tedarikcisi" ("tedarikciID", tedarikcifirmaadi, adres) VALUES (2, 'coffeeword', 'amerika');
+INSERT INTO public."kahve tedarikcisi" ("tedarikciID", tedarikcifirmaadi, adres) VALUES (3, 'worldcoffee', 'kolombiya');
+
+
+--
+-- TOC entry 3429 (class 0 OID 34039)
+-- Dependencies: 222
+-- Data for Name: mahalle; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.mahalle ("adresmahalleID", mahalle, "adresdetayIDf") VALUES (1, 'mahallesi', 1);
+INSERT INTO public.mahalle ("adresmahalleID", mahalle, "adresdetayIDf") VALUES (2, '1mahallesi', 2);
+INSERT INTO public.mahalle ("adresmahalleID", mahalle, "adresdetayIDf") VALUES (3, '2mahallesi', 3);
+INSERT INTO public.mahalle ("adresmahalleID", mahalle, "adresdetayIDf") VALUES (4, '3mahallesi', 4);
+INSERT INTO public.mahalle ("adresmahalleID", mahalle, "adresdetayIDf") VALUES (5, '4mahallesi', 5);
+
+
+--
+-- TOC entry 3424 (class 0 OID 34006)
+-- Dependencies: 217
+-- Data for Name: musteri; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.musteri ("musteriID", ad, soyad, telefon, "adresIDf") VALUES (1, 'asdf', 'asdf', '123', 1);
+INSERT INTO public.musteri ("musteriID", ad, soyad, telefon, "adresIDf") VALUES (2, 'asdf', 'sadf', '123', 2);
+INSERT INTO public.musteri ("musteriID", ad, soyad, telefon, "adresIDf") VALUES (3, 'asdf', 'asdf', '123', 3);
+INSERT INTO public.musteri ("musteriID", ad, soyad, telefon, "adresIDf") VALUES (4, 'asdf', 'adsf', '123', 4);
+INSERT INTO public.musteri ("musteriID", ad, soyad, telefon, "adresIDf") VALUES (5, 'adsf', 'adsf', '123', 5);
+
+
+--
+-- TOC entry 3427 (class 0 OID 34025)
+-- Dependencies: 220
+-- Data for Name: sehir; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.sehir ("adressehirID", "şehir", "adresulkeIDff") VALUES (1, '1şehri', 1);
+INSERT INTO public.sehir ("adressehirID", "şehir", "adresulkeIDff") VALUES (2, '21şehri', 2);
+INSERT INTO public.sehir ("adressehirID", "şehir", "adresulkeIDff") VALUES (3, '31şehri', 3);
+INSERT INTO public.sehir ("adressehirID", "şehir", "adresulkeIDff") VALUES (4, '41şehri', 1);
+INSERT INTO public.sehir ("adressehirID", "şehir", "adresulkeIDff") VALUES (5, '51şehri', 2);
+
+
+--
+-- TOC entry 3423 (class 0 OID 34001)
+-- Dependencies: 216
+-- Data for Name: siparis; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.siparis ("siparisID", "musteriIDf", "dukkanIDffff") VALUES (1, 1, 1);
+INSERT INTO public.siparis ("siparisID", "musteriIDf", "dukkanIDffff") VALUES (2, 2, 2);
+INSERT INTO public.siparis ("siparisID", "musteriIDf", "dukkanIDffff") VALUES (3, 3, 3);
+INSERT INTO public.siparis ("siparisID", "musteriIDf", "dukkanIDffff") VALUES (4, 1, 1);
+INSERT INTO public.siparis ("siparisID", "musteriIDf", "dukkanIDffff") VALUES (5, 2, 2);
+
+
+--
+-- TOC entry 3426 (class 0 OID 34018)
+-- Dependencies: 219
+-- Data for Name: ulke; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.ulke ("adresulkeID", ulke) VALUES (1, 'ülkesi');
+INSERT INTO public.ulke ("adresulkeID", ulke) VALUES (2, '2ülkesi');
+INSERT INTO public.ulke ("adresulkeID", ulke) VALUES (3, '3ülkesi');
+INSERT INTO public.ulke ("adresulkeID", ulke) VALUES (4, '4ülkesi');
+INSERT INTO public.ulke ("adresulkeID", ulke) VALUES (5, '5ülkesi');
+
+
+--
+-- TOC entry 3421 (class 0 OID 33989)
+-- Dependencies: 214
+-- Data for Name: uluslararasi kahve yollari kaydi; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public."uluslararasi kahve yollari kaydi" ("internationalcoffeeID", "ulkeIDf", "tedarikciIDff") VALUES (1, 1, 1);
+INSERT INTO public."uluslararasi kahve yollari kaydi" ("internationalcoffeeID", "ulkeIDf", "tedarikciIDff") VALUES (2, 2, 2);
+INSERT INTO public."uluslararasi kahve yollari kaydi" ("internationalcoffeeID", "ulkeIDf", "tedarikciIDff") VALUES (3, 3, 3);
+INSERT INTO public."uluslararasi kahve yollari kaydi" ("internationalcoffeeID", "ulkeIDf", "tedarikciIDff") VALUES (4, 4, 1);
+INSERT INTO public."uluslararasi kahve yollari kaydi" ("internationalcoffeeID", "ulkeIDf", "tedarikciIDff") VALUES (5, 5, 2);
+INSERT INTO public."uluslararasi kahve yollari kaydi" ("internationalcoffeeID", "ulkeIDf", "tedarikciIDff") VALUES (6, 1, 3);
+INSERT INTO public."uluslararasi kahve yollari kaydi" ("internationalcoffeeID", "ulkeIDf", "tedarikciIDff") VALUES (7, 2, 1);
+INSERT INTO public."uluslararasi kahve yollari kaydi" ("internationalcoffeeID", "ulkeIDf", "tedarikciIDff") VALUES (8, 3, 2);
+
+
+--
+-- TOC entry 3262 (class 2606 OID 34052)
+-- Name: adres detay adres detay_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."adres detay"
+    ADD CONSTRAINT "adres detay_pkey" PRIMARY KEY ("adresdetayID");
+
+
+--
+-- TOC entry 3248 (class 2606 OID 34017)
+-- Name: adres adres_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.adres
+    ADD CONSTRAINT adres_pkey PRIMARY KEY ("adresID");
+
+
+--
+-- TOC entry 3223 (class 2606 OID 33967)
+-- Name: barista barista_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.barista
+    ADD CONSTRAINT barista_pkey PRIMARY KEY (baristaid);
+
+
+--
+-- TOC entry 3226 (class 2606 OID 33974)
+-- Name: dukkan yonetici dukkan yonetici_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."dukkan yonetici"
+    ADD CONSTRAINT "dukkan yonetici_pkey" PRIMARY KEY ("yoneticiID");
+
+
+--
+-- TOC entry 3257 (class 2606 OID 34038)
+-- Name: ilce ilce_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.ilce
+    ADD CONSTRAINT ilce_pkey PRIMARY KEY ("adresilceID");
+
+
+--
+-- TOC entry 3221 (class 2606 OID 33960)
+-- Name: kahve dukkani kahve dukkani_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."kahve dukkani"
+    ADD CONSTRAINT "kahve dukkani_pkey" PRIMARY KEY ("dukkanID");
+
+
+--
+-- TOC entry 3239 (class 2606 OID 34000)
+-- Name: kahve satan ulkeler kahve satan ulkeler_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."kahve satan ulkeler"
+    ADD CONSTRAINT "kahve satan ulkeler_pkey" PRIMARY KEY ("ulkeID");
+
+
+--
+-- TOC entry 3231 (class 2606 OID 33981)
+-- Name: kahve tedarik kaydı kahve tedarik kaydı_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."kahve tedarik kaydı"
+    ADD CONSTRAINT "kahve tedarik kaydı_pkey" PRIMARY KEY ("tedarikID");
+
+
+--
+-- TOC entry 3233 (class 2606 OID 33988)
+-- Name: kahve tedarikcisi kahve tedarikcisi_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."kahve tedarikcisi"
+    ADD CONSTRAINT "kahve tedarikcisi_pkey" PRIMARY KEY ("tedarikciID");
+
+
+--
+-- TOC entry 3260 (class 2606 OID 34045)
+-- Name: mahalle mahalle_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.mahalle
+    ADD CONSTRAINT mahalle_pkey PRIMARY KEY ("adresmahalleID");
+
+
+--
+-- TOC entry 3246 (class 2606 OID 34012)
+-- Name: musteri musteri_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.musteri
+    ADD CONSTRAINT musteri_pkey PRIMARY KEY ("musteriID");
+
+
+--
+-- TOC entry 3254 (class 2606 OID 34031)
+-- Name: sehir sehir_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.sehir
+    ADD CONSTRAINT sehir_pkey PRIMARY KEY ("adressehirID");
+
+
+--
+-- TOC entry 3243 (class 2606 OID 34005)
+-- Name: siparis siparis_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.siparis
+    ADD CONSTRAINT siparis_pkey PRIMARY KEY ("siparisID");
+
+
+--
+-- TOC entry 3251 (class 2606 OID 34024)
+-- Name: ulke ulke_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.ulke
+    ADD CONSTRAINT ulke_pkey PRIMARY KEY ("adresulkeID");
+
+
+--
+-- TOC entry 3237 (class 2606 OID 33993)
+-- Name: uluslararasi kahve yollari kaydi uluslararasi kahve yollari kaydi_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."uluslararasi kahve yollari kaydi"
+    ADD CONSTRAINT "uluslararasi kahve yollari kaydi_pkey" PRIMARY KEY ("internationalcoffeeID");
+
+
+--
+-- TOC entry 3244 (class 1259 OID 34106)
+-- Name: fki_adresIDforeign; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "fki_adresIDforeign" ON public.musteri USING btree ("adresIDf");
+
+
+--
+-- TOC entry 3258 (class 1259 OID 34100)
+-- Name: fki_adresdetayIForegn; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "fki_adresdetayIForegn" ON public.mahalle USING btree ("adresdetayIDf");
+
+
+--
+-- TOC entry 3255 (class 1259 OID 34076)
+-- Name: fki_adressehirforeign; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_adressehirforeign ON public.ilce USING btree ("adressehirIDf");
+
+
+--
+-- TOC entry 3252 (class 1259 OID 34112)
+-- Name: fki_adresulkeIDforeign; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "fki_adresulkeIDforeign" ON public.sehir USING btree ("adresulkeIDff");
+
+
+--
+-- TOC entry 3249 (class 1259 OID 34058)
+-- Name: fki_adresulkeforeing; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_adresulkeforeing ON public.adres USING btree ("adresulkeIDf");
+
+
+--
+-- TOC entry 3240 (class 1259 OID 34124)
+-- Name: fki_dukkanIDFFFfforeign; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "fki_dukkanIDFFFfforeign" ON public.siparis USING btree ("dukkanIDffff");
+
+
+--
+-- TOC entry 3228 (class 1259 OID 34094)
+-- Name: fki_dukkanidfffforeign; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_dukkanidfffforeign ON public."kahve tedarik kaydı" USING btree ("dukkanIDfff");
+
+
+--
+-- TOC entry 3227 (class 1259 OID 34070)
+-- Name: fki_dukkanidffforeing; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_dukkanidffforeing ON public."dukkan yonetici" USING btree ("dukkanIDff");
+
+
+--
+-- TOC entry 3224 (class 1259 OID 34064)
+-- Name: fki_dukkanidforeignn; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_dukkanidforeignn ON public.barista USING btree ("dukkanIDf");
+
+
+--
+-- TOC entry 3241 (class 1259 OID 34118)
+-- Name: fki_musteridfforeign; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_musteridfforeign ON public.siparis USING btree ("musteriIDf");
+
+
+--
+-- TOC entry 3229 (class 1259 OID 34088)
+-- Name: fki_tedarikcidfforeign; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_tedarikcidfforeign ON public."kahve tedarik kaydı" USING btree ("tedarikciIDf");
+
+
+--
+-- TOC entry 3234 (class 1259 OID 34136)
+-- Name: fki_tedarikcifforeign; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_tedarikcifforeign ON public."uluslararasi kahve yollari kaydi" USING btree ("tedarikciIDff");
+
+
+--
+-- TOC entry 3235 (class 1259 OID 34130)
+-- Name: fki_ulkeIDfforeign; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "fki_ulkeIDfforeign" ON public."uluslararasi kahve yollari kaydi" USING btree ("ulkeIDf");
+
+
+--
+-- TOC entry 3219 (class 1259 OID 34082)
+-- Name: fki_yoneticiIdforeign; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "fki_yoneticiIdforeign" ON public."kahve dukkani" USING btree ("yoneticiIDf");
+
+
+--
+-- TOC entry 3272 (class 2606 OID 34101)
+-- Name: musteri adresIDforeign; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.musteri
+    ADD CONSTRAINT "adresIDforeign" FOREIGN KEY ("adresIDf") REFERENCES public.adres("adresID") NOT VALID;
+
+
+--
+-- TOC entry 3276 (class 2606 OID 34095)
+-- Name: mahalle adresdetayIForegn; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.mahalle
+    ADD CONSTRAINT "adresdetayIForegn" FOREIGN KEY ("adresdetayIDf") REFERENCES public."adres detay"("adresdetayID") NOT VALID;
+
+
+--
+-- TOC entry 3275 (class 2606 OID 34071)
+-- Name: ilce adressehirforeign; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.ilce
+    ADD CONSTRAINT adressehirforeign FOREIGN KEY ("adressehirIDf") REFERENCES public.sehir("adressehirID") NOT VALID;
+
+
+--
+-- TOC entry 3274 (class 2606 OID 34107)
+-- Name: sehir adresulkeIDforeign; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.sehir
+    ADD CONSTRAINT "adresulkeIDforeign" FOREIGN KEY ("adresulkeIDff") REFERENCES public.ulke("adresulkeID") NOT VALID;
+
+
+--
+-- TOC entry 3273 (class 2606 OID 34053)
+-- Name: adres adresulkeforeing; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.adres
+    ADD CONSTRAINT adresulkeforeing FOREIGN KEY ("adresulkeIDf") REFERENCES public.ulke("adresulkeID") NOT VALID;
+
+
+--
+-- TOC entry 3271 (class 2606 OID 34119)
+-- Name: siparis dukkanIDFFFfforeign; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.siparis
+    ADD CONSTRAINT "dukkanIDFFFfforeign" FOREIGN KEY ("dukkanIDffff") REFERENCES public."kahve dukkani"("dukkanID") NOT VALID;
+
+
+--
+-- TOC entry 3267 (class 2606 OID 34089)
+-- Name: kahve tedarik kaydı dukkanidfffforeign; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."kahve tedarik kaydı"
+    ADD CONSTRAINT dukkanidfffforeign FOREIGN KEY ("dukkanIDfff") REFERENCES public."kahve dukkani"("dukkanID") NOT VALID;
+
+
+--
+-- TOC entry 3265 (class 2606 OID 34065)
+-- Name: dukkan yonetici dukkanidffforeing; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."dukkan yonetici"
+    ADD CONSTRAINT dukkanidffforeing FOREIGN KEY ("dukkanIDff") REFERENCES public."kahve dukkani"("dukkanID") NOT VALID;
+
+
+--
+-- TOC entry 3264 (class 2606 OID 34059)
+-- Name: barista dukkanidforeignn; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.barista
+    ADD CONSTRAINT dukkanidforeignn FOREIGN KEY ("dukkanIDf") REFERENCES public."kahve dukkani"("dukkanID") NOT VALID;
+
+
+--
+-- TOC entry 3270 (class 2606 OID 34113)
+-- Name: siparis musteridfforeign; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.siparis
+    ADD CONSTRAINT musteridfforeign FOREIGN KEY ("musteriIDf") REFERENCES public.musteri("musteriID") NOT VALID;
+
+
+--
+-- TOC entry 3266 (class 2606 OID 34083)
+-- Name: kahve tedarik kaydı tedarikcidfforeign; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."kahve tedarik kaydı"
+    ADD CONSTRAINT tedarikcidfforeign FOREIGN KEY ("tedarikciIDf") REFERENCES public."kahve tedarikcisi"("tedarikciID") NOT VALID;
+
+
+--
+-- TOC entry 3269 (class 2606 OID 34131)
+-- Name: uluslararasi kahve yollari kaydi tedarikcifforeign; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."uluslararasi kahve yollari kaydi"
+    ADD CONSTRAINT tedarikcifforeign FOREIGN KEY ("tedarikciIDff") REFERENCES public."kahve tedarikcisi"("tedarikciID") NOT VALID;
+
+
+--
+-- TOC entry 3268 (class 2606 OID 34125)
+-- Name: uluslararasi kahve yollari kaydi ulkeIDfforeign; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."uluslararasi kahve yollari kaydi"
+    ADD CONSTRAINT "ulkeIDfforeign" FOREIGN KEY ("ulkeIDf") REFERENCES public."kahve satan ulkeler"("ulkeID") NOT VALID;
+
+
+--
+-- TOC entry 3263 (class 2606 OID 34077)
+-- Name: kahve dukkani yoneticiIdforeign; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."kahve dukkani"
+    ADD CONSTRAINT "yoneticiIdforeign" FOREIGN KEY ("yoneticiIDf") REFERENCES public."dukkan yonetici"("yoneticiID") NOT VALID;
+
+
+-- Completed on 2021-12-20 21:25:52
+
+--
+-- PostgreSQL database dump complete
+--
+
